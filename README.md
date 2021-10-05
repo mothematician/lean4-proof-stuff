@@ -1,4 +1,4 @@
-# Lean4
+## Lean4
 
 interactive theorem prover for math
 
@@ -10,6 +10,7 @@ https://leanprover-community.github.io/blog/
 
 community chatroom:
 https://leanprover.zulipchat.com/
+https://leanprover.zulipchat.com/#narrow/is/private
 
 Xena Project: 
 https://twitter.com/XenaProject
