@@ -1,4 +1,6 @@
 -- Lean has first-class functions.
+-- they're funcs that are teated like any other variables
+  -- can be passsed as args to other funcs, return by another, assigned as value to variable
 
 -- functions: can take in two or more args
 -- args: each can also be arbitrary/anonymous functions itself - ie '(f : Nat → Nat)'

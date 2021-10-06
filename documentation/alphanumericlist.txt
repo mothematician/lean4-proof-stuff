@@ -1,0 +1,32 @@
+for typing in stuff that are unicode
+start with \ then the desired name
+
+MISC:
+to, r, -> for →
+times for ×
+
+GREEK:
+alpha
+beta
+gamma
+delta
+epsilon
+zeta
+eta
+theta
+iota
+kappa
+lambda
+mu
+nu
+xi
+omicron
+pi
+rho
+sigma
+tau
+upsilon
+phi
+chi
+psi
+omega
