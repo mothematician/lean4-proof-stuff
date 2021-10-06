@@ -2,7 +2,7 @@
 -- type theory: every expression has an associated type
 
 
-/- SIMPLY TYPE THEORY -/
+/- SIMPLE TYPE THEORY -/
 
 -- declaring objects and checking their types:
 -- `def`: can be used to define variables and functions (instead of python x = 1)
@@ -113,3 +113,50 @@ then Type 1 ia larger universes of types, that contain Type 0 as element
 Type 2 even larger unvierse of types, containing Type 1
 so on...
 -/
+
+
+-- POLYMORPHISM
+
+-- some operations need to be polymorphic over type universes
+  -- ie. `List α` should make sense for any type α no matter which type universe it lives in
+-- thus type annotation of function `List`:
+  -- `u_1` is variable ranging over type levels
+  -- output of `#check`: whenever α is Type n, List α also is Type n
+-- same case for `Prod`
+#check List    -- Type u_1 → Type u_1
+#check Prod    -- Type u_1 → Type u_2 → Type (max u_1 u_2)
+
+-- to define polymorphic constants, Lean allows you to declare universe vaiables explicitly
+  -- w/ `universe` command:
+universe u
+def A (α : Type u) : Type u := Prod α α
+#check A    -- Type u → Type u
+
+-- can also avoid universe command by providing universe parameters when defining A
+def D.{d} (α : Type d) : Type d := Prod α α
+#check D    -- Type u → Type u
+
+
+-- FUNCTION ABSTRACTION AND EVALUATION
+
+-- `fun` or `λ` to quickly create function from expression & evaluate it
+#check fun (x : Nat) => x + 5   -- Nat → Nat
+#check λ (x : Nat) => x + 5     -- λ and fun mean the same thing
+#check fun x : Nat => x + 5     -- Nat inferred
+#check λ x : Nat => x + 5       -- Nat inferred
+#eval (λ x : Nat => x + 5) 10    -- 15
+
+-- lambda abstraction: process of creating func from another expression
+/- suppose i hv variable `x : α` (x is variable of type α) 
+    and can construct expression `t : β`
+    then the expression `fun (x : α) => t` or `λ (x : α) => t` is object of type `α → β`
+    like func from α to β which maps any value x to value t
+-/
+#check fun x : Nat => fun y : Bool => if not y then x + 1 else x + 2
+#check fun (x : Nat) (y : Bool) => if not y then x + 1 else x + 2
+#check fun x y => if not y then x + 1 else x + 2   -- Nat → Bool → Nat
+
+-- more examples
+#check fun x : Nat => fun y : Bool => if not y then x + 1 else x + 2
+#check fun (x : Nat) (y : Bool) => if not y then x + 1 else x + 2
+#check fun x y => if not y then x + 1 else x + 2   -- Nat → Bool → Nat
