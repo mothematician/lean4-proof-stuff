@@ -233,3 +233,7 @@ def gg (s : String) : Bool := s.length > 1
     -- seems like it.
     -- note the u v x all satisfy composiiton of the ff and gg
     #eval (fun (α β γ : Type) (u : β → γ) (v : α → β) (x : α) => u (v x)) Nat String Bool gg ff 23
+
+    -- OK NOW I HAVE ANSWER - THE Nat String Bool IS FED INTO THE α β γ : Type
+    -- since u (v x)) is the fun we are defining, we need to make sure to input all the required args
+    -- check `definitions.lean` for more details
