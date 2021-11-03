@@ -54,3 +54,9 @@
       end phat
 
 
+-- namespace vs sections:
+  -- namespace: organize data
+  -- sections: declare variables for insertion in definitions, and delimiting scope of commands like `set_option` and `open`
+
+  -- tho in some respects, they behave same:
+    -- in particular, use the `variable` command within a namespace, its scope is limited to the namespace
