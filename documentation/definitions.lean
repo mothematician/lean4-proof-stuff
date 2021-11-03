@@ -52,6 +52,7 @@ def double4times (x : Nat) := double4 (double4 x)
 -- introduce local definitions using `let` keyword
   -- ie, `let a := t1; t2` equivalent to replacing every occurence of a in t2 by t1
 
+  -- format is just: let (variable) := definition of (variable); action to do to the (variables))
   #check let y := 2 + 2; y * y   -- Nat
   #eval  let y := 2 + 2; y * y   -- 16
 
@@ -59,6 +60,24 @@ def double4times (x : Nat) := double4 (double4 x)
     let y := x + x; y * y
 
   #eval twice_double 2   -- 16
+
+  #check let y := 2 + 2; let z := y + y; z * z   -- Nat
+  #eval  let y := 2 + 2; let z := y + y; z * z   -- 64
+
+
+  def mycoolfunc (x : Nat) (y : Bool) : Nat :=
+    if y = True then let a := 2 * x; 3 / a
+    else let a := 3 * x; 2 * a
+
+  #eval mycoolfunc 4 True 
+
+  -- NOTE: meaning of experession `let a := t1; t2` similar to `(fun a => t2) t1` but not same
+    -- let is stronger means of abbrev & there are terms expressed in former not possible in latter
+      -- below: latter doesnt work bc it needs to be fed an actual variable and the constraint "Nat" can't be inputted into it (i think)
+      def foo := let a := Nat; fun x : a => x + 2
+      /-
+        def bar := (fun a => fun x : a => x + 2) Nat
+      -/
 
 
 -- `variables and sections`
