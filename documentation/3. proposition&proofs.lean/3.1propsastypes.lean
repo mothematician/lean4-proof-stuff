@@ -89,7 +89,6 @@ differ in fundamental way:
 -- coding trick: expressions do not denote anything interesting - expressions themselves ARE proofs
 -/
 
-
 /-
 may slip between the two ways of thinking: 
 -- at times saying that an expression "constructs" or "produces" or "returns" a proof of a proposition, and at other times simply saying that it "is" such a proof
