@@ -14,6 +14,7 @@ Not	¬	\not, \neg	Not
 -/
 
 -- they all take values in `Prop`
+
 variable (p q : Prop)
 
 #check p → q → p ∧ q
@@ -26,4 +27,3 @@ variable (p q : Prop)
   -- ∨ 
   -- → 
 
-/- CONJUNCTION -/
